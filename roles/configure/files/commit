@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+echo "Adding all the files to staging area."
+git add */*
+echo "Commiting all the files."
+git commit -a -m "fast commit"

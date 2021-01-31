@@ -1,0 +1,10 @@
+---
+# tasks file for kubernetes-main
+
+- name: setting default zone trusted
+  shell: firewall-cmd --set-default-zone trusted
+  ignore_errors: yes
+
+- name: reloading firewall rules
+  shell: firewall-cmd --reload
+  ignore_errors: yes

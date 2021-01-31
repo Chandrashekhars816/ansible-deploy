@@ -1,0 +1,35 @@
+---
+# tasks file for nfsserver
+
+- name: Create mountable dir
+  file: 
+       path: /share 
+       state: directory 
+       mode: 0777 
+       owner: root 
+       group: root
+  ignore_errors: yes
+  register: y
+
+- name: installing nfs server package
+  yum:
+       name: "{{ packages }}"
+  vars:
+       packages:
+               - nfs-utils
+       state: present
+  ignore_errors: yes
+  register: x
+
+- name: copy /etc/exports
+  template: 
+       src: exports.j2 
+       dest: /etc/exports 
+       owner: root 
+       group: root
+
+- name: restart nfs server
+  service: 
+       name: nfs-server 
+       state: restarted
+

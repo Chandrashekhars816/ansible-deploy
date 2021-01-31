@@ -1,0 +1,8 @@
+---
+# tasks file for jenkins
+- name: For jenkins installation
+  dnf:
+          name:
+               - jenkins
+               - java-1.8.0-openjdk
+          state: present          

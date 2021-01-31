@@ -1,0 +1,76 @@
+---
+# tasks file for configure
+
+- name: Check File exists or not
+  stat: 
+    path: /dvd
+  ignore_errors: yes
+  register: status
+
+- debug:
+    msg: "/dvd/ directory doesn't exist"
+  when: status.stat.islnk is not defined
+
+- name: Create a directory if it does not exist
+  file:
+    path: /dvd
+    state: directory
+    mode: '0777'
+  when: status.stat.islnk is not defined
+
+- name: Mount DVD read-only
+  mount:
+    path: /dvd
+    src: /dev/cdrom
+    fstype: iso9660
+    opts: ro,noauto
+    state: present
+  ignore_errors: yes
+
+- name: for local repo
+  lineinfile:
+             path: /root/Desktop/demo.txt
+             line: "{{ item.line }}"
+             mode: u=rwx,g=rx,o=rx
+             create: yes
+  with_items:
+             - { line: 'mount /dev/cdrom /dvd' }
+
+- name: Required packages for guest additions installation 
+  package:
+          name:
+               - platform-python-devel
+               - gcc
+               - perl
+               - make
+               - kernel-headers
+               - kernel-devel
+               - elfutils-libelf-devel
+          state: present        
+
+- name: copy the commit command
+  copy:
+          src: commit
+          dest: /usr/bin/
+          owner: root
+          group: root
+          mode: u=rwx,g=rwx,o=rwx 
+
+- name: copying the repos
+  copy: 
+          src: "{{ item.src }}"
+          dest: "{{ item.dest }}"
+          owner: root
+          group: root
+          mode: u=rwx,g=rwx,o=rwx
+  with_items:
+    - { src: 'dvd.repo', dest: '/etc/yum.repos.d/' }
+    - { src: 'jenkins.repo', dest: '/etc/yum.repos.d/' }
+
+- name: configure the yum for jenkins server
+  copy:
+          src: jenkins.repo
+          dest: /etc/yum.repos.d/
+          owner: root
+          group: root
+          mode: u=rwx,g=rwx,o=rwx

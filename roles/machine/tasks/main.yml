@@ -1,0 +1,8 @@
+---
+# tasks file for machine
+- pip:
+      name:
+           - numpy
+           - pandas
+           - scikit-learn
+           - folium

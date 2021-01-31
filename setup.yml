@@ -1,0 +1,30 @@
+################################### this is for the jenkins server ##########################################################
+#- hosts: jenkinsservers                                                                                                    #
+#  roles:                                                                                                                   #
+#         - configure                                                                                                       #
+#         - jenkins                                                                                                         #
+################## this is for the Rhel 8 vm at where you want to install guest additions ###################################
+#- hosts: resolution                                                                                                        #
+#  roles:                                                                                                                   #
+#         - configure                                                                                                       #
+################################## this is for the Ml models servers ########################################################
+#- hosts: machine                                                                                                           #
+#  roles:                                                                                                                   #
+#         - configure                                                                                                       #
+#         - machine                                                                                                         #
+################################## this is for the docker images registry ###################################################
+#- hosts: registry                                                                                                          #
+#  roles:                                                                                                                   #
+#         - configure                                                                                                       #
+#         - registry                                                                                                        #
+################################## this is for nfs server ###################################################################
+#- hosts: nfs-server                                                                                                        #
+#  roles:                                                                                                                   #
+#         - configure                                                                                                       #
+#         - nfsserver                                                                                                       #
+################################## this is for nfs client ###################################################################
+#- hosts: nfs-client                                                                                                        #
+#  roles:                                                                                                                   #
+#         - configure                                                                                                       #
+#         - nfsclient                                                                                                       #
+##################################### adding more features ( WIP ) ##########################################################
