@@ -1,5 +1,5 @@
 ## Welcome to Ansible project
-![Image](https://github.com/Chandrashekhars816/ansible-projects/blob/master/icons/ansible.png)
+![Image](https://github.com/Chandrashekhars816/ansible-deploy/blob/main/icons/ansible.png)
 
 ## How to use?
 ```markdown
