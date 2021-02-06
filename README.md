@@ -8,7 +8,7 @@
 > cd ansible-deploy
 > bash ansibleinstall
 
-## Very Important step
+## Very Important step make sure to update it
 
 > ssh-keygen # press enter then enter then enter till prompt stops asking
 > ssh-copy-id root@ipoftheserver
