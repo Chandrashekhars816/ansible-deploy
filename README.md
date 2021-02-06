@@ -1,4 +1,5 @@
 ## Welcome to Ansible project
+
 ![Image](https://github.com/Chandrashekhars816/ansible-deploy/blob/main/icons/ansible.png)
 
 ## How to use?
@@ -32,7 +33,6 @@
              
            **known bugs:
                     - push will fail when there's unrelated history files on the remote repo.
-
                     - It will only push at master remote branch.**
 ```
 ## 2. What are prequsites?
